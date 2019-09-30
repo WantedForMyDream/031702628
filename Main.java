@@ -13,39 +13,13 @@ public class Main {
 //        String string="1!钭隆箍,山西省阳泉市矿13100299356区赛鱼街道麻地巷32号楼.";
 
 //        resolution(string);
-        List<String> list=fileRead(args[0]);
+        List<String> list= Utils.fileRead(args[0]);
         String str="";
         for(int i=0;i<list.size();i++){
-            System.out.println(list.get(i));
+//            System.out.println(list.get(i));
             str=str+resolution(list.get(i))+"\n";
         }
-        fileWrite(args[1],str);
-    }
-
-    public static void fileWrite(String path,String string) throws IOException {
-        BufferedWriter bw=null;
-        bw=new BufferedWriter(new FileWriter(path));
-        bw.write(string);
-        bw.flush();
-        bw.close();
-    }
-
-    public static List fileRead(String path) throws IOException {
-        File file = new File(path);//定义一个file对象，用来初始化FileReader
-        FileReader reader = new FileReader(file);//定义一个fileReader对象，用来初始化BufferedReader
-        BufferedReader bReader = new BufferedReader(reader);//new一个BufferedReader对象，将文件内容读取到缓存
-        StringBuilder sb = new StringBuilder();//定义一个字符串缓存，将字符串存放缓存中
-        String s = "";
-        List<String> list=new ArrayList();
-        while ((s =bReader.readLine()) != null) {//逐行读取文件内容，不读取换行符和末尾的空格
-//            sb.append(s + "\n");//将读取的字符串添加换行符后累加存放在缓存中
-            list.add(s);
-            System.out.println(s);
-        }
-        bReader.close();
-        String str = sb.toString();
-//        System.out.println(str );
-        return list;
+        Utils.fileWrite(args[1],str);
     }
 
     public static String resolution(String string){
