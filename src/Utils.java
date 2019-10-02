@@ -46,6 +46,7 @@ public class Utils {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
             bw = new BufferedWriter(outputStreamWriter);
+            string="["+string+"]";
             bw.write(string);
         } catch (IOException e) {
             e.printStackTrace();

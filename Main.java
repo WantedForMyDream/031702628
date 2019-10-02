@@ -10,16 +10,17 @@ public class Main {
 //        args = new String[]{"1.txt","2.txt"};
 //        Scanner scanner=new Scanner(System.in);
 //        String string =scanner.nextLine();
-//        String string="1!钭隆箍,山西省阳泉市矿13100299356区赛鱼街道麻地巷32号楼.";
+        String string="1!宁间,上海市杨浦区新江湾城街道殷行路851号东森涵碧景苑社13090506575区-老年活动室.";
+        System.out.println(string);
 
-//        resolution(string);
-        List<String> list= Utils.fileRead(args[0]);
-        String str="";
-        for(int i=0;i<list.size();i++){
-//            System.out.println(list.get(i));
-            str=str+resolution(list.get(i))+"\n";
-        }
-        Utils.fileWrite(args[1],str);
+        resolution(string);
+//        List<String> list= Utils.fileRead(args[0]);
+//        String str="";
+//        for(int i=0;i<list.size();i++){
+////            System.out.println(list.get(i));
+//            str=str+resolution(list.get(i))+"\n";
+//        }
+//        Utils.fileWrite(args[1],str);
     }
 
     public static String resolution(String string){
@@ -53,7 +54,7 @@ public class Main {
 
         JSONObject jsonObject=JSONObject.fromObject(map);
         String json=jsonObject.toString();
-//        System.out.println(json);
+        System.out.println(json);
         return json;
     }
 
