@@ -1,3 +1,4 @@
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import java.io.*;
@@ -14,16 +15,23 @@ public class Main {
 //        System.out.println(string);
 
 //        resolution(string);
-        List<String> list= Utils.fileRead(args[0]);
+        List<String> inputs= Utils.fileRead(args[0]);
+        JSONArray jsonArray=new JSONArray();
+        List<Map> outputs=new ArrayList<Map>();
         String str="";
-        for(int i=0;i<list.size();i++){
+        for(int i=0;i<inputs.size();i++){
 //            System.out.println(list.get(i));
-            str=str+resolution(list.get(i))+",";
+//            str=str+resolution(list.get(i))+",";
+
+            outputs.add(resolution(inputs.get(i)));
+//            System.out.println(resolution(inputs.get(i)));
         }
-        Utils.fileWrite(args[1],str);
+        jsonArray=JSONArray.fromObject(outputs);
+        String result=jsonArray.toString();
+        Utils.fileWrite(args[1],result);
     }
 
-    public static String resolution(String string){
+    public static Map resolution(String string){
         int flag=-1;
         String str=string.substring(0,1);
         if (str.equals("1")){
@@ -52,13 +60,13 @@ public class Main {
         map.remove("地址");
         map.put("地址",addressResolution(flag,address));
 
-        String num=""+flag;
-        map.put("level",num);
-
-        JSONObject jsonObject=JSONObject.fromObject(map);
-        String json=jsonObject.toString();
-        System.out.println(json);
-        return json;
+        return map;
+//        JSONObject jsonObject=JSONObject.fromObject(map);
+//
+//        return jsonObject;
+//        String json=jsonObject.toString();
+//        System.out.println(json);
+//        return json;
     }
 
     //从字符串中分离出姓名和手机号码，剩下地址

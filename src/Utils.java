@@ -1,3 +1,5 @@
+import net.sf.json.JSONArray;
+
 import java.io.*;
 import java.math.BigDecimal;
 import java.net.MalformedURLException;
@@ -46,7 +48,6 @@ public class Utils {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8);
             bw = new BufferedWriter(outputStreamWriter);
-            string="["+string+"]";
             bw.write(string);
         } catch (IOException e) {
             e.printStackTrace();
@@ -84,5 +85,11 @@ public class Utils {
             }
         }
         return list;
+    }
+
+    public static <T> String toJSONString(List<T> list) {
+        JSONArray jsonArray = JSONArray.fromObject(list);
+
+        return jsonArray.toString();
     }
 }
